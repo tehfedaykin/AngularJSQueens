@@ -1,0 +1,20 @@
+<h1>{{vm.queen.name}}</h1>
+<div class="queen-photo">
+  <img src="{{vm.queen.image_url}}" alt="{{vm.queen.name}}" />
+</div>
+
+<h2>Seasons</h2>
+<ul>
+  <li ng-repeat="season in vm.queen.seasons">
+    <a href="#!/seasons/{{season.id}}">{{season.id}}</a>
+    <p>Place: {{season.place}}</p>
+  </li>
+</ul>
+
+<!-- <h2>Lipsyncs</h2>
+<ul>
+  <li ng-repeat="season in vm.queen.seasons">
+    <a href="#!/seasons/{{season.id}}">{{season.id}}</a>
+    <p>Place: {{season.place}}</p>
+  </li>
+</ul> -->

@@ -1,0 +1,6 @@
+<ul class="lipsyncs">
+    <li ng-repeat="lipsync in (vm.lipsync | async:this)">
+      <a href="">Search Youtube</a>
+      <p>{{lipsync.name}} by {{lipsync.artist}}</p>
+    </li>
+  </ul>

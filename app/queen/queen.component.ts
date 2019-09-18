@@ -1,13 +1,21 @@
-import IQueen from "../queens/queensI";
+import IQueen from "../queens/Iqueen";
+import queenTemplate from './queen.component.html';
+import './queen.component.less';
 
-QueenCtrl.$inject = ['Queen', '$routeParams']
+QueenCtrl.$inject = ['QueenService', '$stateParams']
 
-function QueenCtrl(Queen: any, $routeParams: any) {
+function QueenCtrl(QueenService: any, $stateParams: any) {
   var vm = this;
-  Queen.getQueen($routeParams.queenId).then((res: IQueen) => {
-    console.log('getting queen', res);
+  QueenService.getQueen($stateParams.queenId).then((res: IQueen) => {
     vm.queen = res;
+    console.log('queen', vm.queen);
   })
 }
 
-export default QueenCtrl
+let queenComponent  = {
+  template: queenTemplate,
+  controller: QueenCtrl, 
+  controllerAs: 'vm'
+}
+
+export default queenComponent

@@ -1,4 +1,5 @@
 
+import homeTemplate from './home.component.html';
 
 function HomeCtrl() {
     var vm = this;
@@ -6,4 +7,9 @@ function HomeCtrl() {
     console.log('home');
 }
 
-export default HomeCtrl
+let homeComponent = {
+    template: homeTemplate,
+    controller: HomeCtrl, 
+    controllerAs: 'vm'
+}
+export default homeComponent
