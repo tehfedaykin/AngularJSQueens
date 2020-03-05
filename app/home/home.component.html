@@ -1,1 +1,38 @@
-<h1>{{vm.title}}</h1>
+<div layout="column" flex>
+  <md-toolbar layout="row" class="md-toolbar-tools">
+    <md-button class="menu md-icon-button" hide-gt-sm ng-click="vm.toggleUsersList()"
+      aria-label="Show User List">
+      MENU
+      <!-- <md-icon md-svg-icon="menu"></md-icon> -->
+    </md-button>
+    <h1><a ui-sref="home">Home</a></h1>
+    <div><a ui-sref="home.queens">queens</a> | <a ui-sref="home.seasons">seasons</a></div>
+    <div queen-nav></div>
+  </md-toolbar>
+
+  <!-- Container #2 -->
+  <div flex layout="row">
+
+    <!-- Container #3 -->
+    <md-sidenav md-is-locked-open="vm.$mdMedia('gt-sm')" class="md-whiteframe-4dp"
+                md-component-id="left">
+      <div class="side-bar">
+        <h3>My Favorite Queens</h3>
+        <ul>
+          <li>
+            <h4>Bianco Del Rio</h4>
+            <p>Fav lipsync</p>
+          </li>
+        </ul>
+      </div>
+    </md-sidenav>
+
+    <!-- Container #4 -->
+    <md-content flex id="content">
+      <ui-view></ui-view>
+    </md-content>
+
+  </div>
+
+</div>
+

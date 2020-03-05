@@ -1,0 +1,9 @@
+<div ng-if="vm.user">
+  <p>User logged in {{vm.user.name}}</p>
+  <button ng-click="vm.logOut()">Log Out</button>
+</div>
+<form class="form" ng-submit="vm.submitForm()">
+  <input type="text" name="user" ng-model="vm.form.user">
+  <input type="text" name="password" ng-model="vm.form.password">
+  <button type="submit">Log In</button>
+</form>

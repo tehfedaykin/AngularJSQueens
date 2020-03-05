@@ -1,12 +1,19 @@
 import ISeason from "./Iseason";
+import seasonTemplate from './season.component.html';
 
-seasonsCtrl.$inject = ['SeasonsService'];
+seasonsCtrl.$inject = ['SeasonService', 'QueenService'];
 
-function seasonsCtrl(SeasonsService: any) {
+function seasonsCtrl(SeasonService: any, QueenService: any) {
   var vm = this;
-  SeasonsService.getSeasons().then((res: ISeason[]) => {
-    vm.seasons = res;
+  SeasonService.getSeasons().subscribe((res: ISeason[]) => {
+    vm.seasons = res
   });
-
-  //create async pipe for angularJS?? 
 }
+
+let seasonsComponent  = {
+  template: seasonTemplate,
+  controller: seasonsCtrl, 
+  controllerAs: 'vm'
+}
+
+export default seasonsComponent

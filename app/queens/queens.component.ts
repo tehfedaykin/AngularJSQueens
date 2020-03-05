@@ -2,7 +2,7 @@ import IQueen from "./Iqueen";
 import queensTemplate from './queens.component.html';
 import ISeason from "../seasons/Iseason";
 import { BehaviorSubject, Observable, } from "rxjs";
-import { mergeMap, switchMapTo, map, switchMap } from  'rxjs/operators';
+import { mergeMap } from  'rxjs/operators';
 
 class QueensCtrl implements angular.IComponentController {
   public static $inject: string[] = ['QueenService', 'SeasonService'];
@@ -10,8 +10,8 @@ class QueensCtrl implements angular.IComponentController {
   public title: string = 'Queens Component';
   public selectedSeason: BehaviorSubject<string> = new BehaviorSubject<string>(null);
   public seasons: Observable<ISeason[]>;
-  public allQueens: Observable<IQueen[]>;
-  public displayedQueens: Observable<IQueen[]>;
+  public allQueens$: Observable<IQueen[]>;
+  public displayedQueens$: Observable<IQueen[]>;
   public selectedWinners: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(private QueenService: any, private SeasonService: any ) {
@@ -20,17 +20,15 @@ class QueensCtrl implements angular.IComponentController {
 
   public $onInit () {
     this.seasons = this.SeasonService.getSeasons();
-    this.allQueens = this.QueenService.getQueens();
+    this.allQueens$ = this.QueenService.getQueens();
 
-
-    this.displayedQueens = this.selectedSeason.pipe(
+    this.displayedQueens$ = this.selectedSeason.pipe(
       mergeMap((seasonId: string) => {
         if (seasonId) {
           return this.QueenService.getSeasonQueens(seasonId) as Observable<IQueen[]>;
         }
         else {
-          console.log('getting all queens');
-          return this.QueenService.getQueens() as Observable<IQueen[]>;
+          return this.allQueens$ as Observable<IQueen[]>;
         }
       })
     )

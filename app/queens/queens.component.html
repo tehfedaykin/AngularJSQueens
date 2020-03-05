@@ -8,7 +8,7 @@
 </select>
 <label for="winners">Only show winning queens:</label>
 <ul class="queens">
-  <li ng-repeat="queen in (vm.displayedQueens | async:this)">
+  <li ng-repeat="queen in (vm.displayedQueens$ | async:this)">
     <a href="#!/queens/{{queen.id}}">{{queen.name}}</a>
     <p>{{queen.quote}}</p>
   </li>

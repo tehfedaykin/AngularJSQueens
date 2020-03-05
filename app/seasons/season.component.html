@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th></th>
+    <th>Season</th>
+    <th>Queens</th>
+  </tr>
+  <tr ng-repeat="season in (vm.seasons | async:this)">
+    <td><img src="{{season.image_url}}" alt="Season {{season.number}}" style="width: 800px"></td>
+    <td>{{season.number}}</td>
+    <td>
+      <ul>
+        <li ng-repeat="queen in season.queens">{{queen.name}}</li>
+      </ul>
+    </td>
+  </tr>
+</table>

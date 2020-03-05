@@ -24,12 +24,12 @@ function queensService($http: angular.IHttpService) {
         .then(getQueensComplete)
         .catch(getQueensFailed));
 
-    function getQueensComplete(response: angular.IHttpResponse<[]> ): IQueen[] {
+    function getQueensComplete(response: angular.IHttpResponse<IQueen[]> ): IQueen[] {
       return response.data;
     }
 
     function getQueensFailed(error: angular.IHttpResponse<error>) {
-      console.log('error', error.data.error.message);
+      //console.log('error', error?.data?.error.message);
     }
   }
 

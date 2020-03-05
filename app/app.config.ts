@@ -1,7 +1,9 @@
+import '../app/assets/svg/menu.svg';
 
-routing.$inject = ['$stateProvider'];
+routing.$inject = ['$stateProvider', '$urlRouterProvider'];
 
-export default function routing($stateProvider: any) {
+export default function routing($stateProvider: any, $urlRouterProvider: any) {
+
     var homeState = {
         name: 'home',
         url: '/',
@@ -9,16 +11,24 @@ export default function routing($stateProvider: any) {
     };
 
     var queensState = {
-        name: 'queens',
-        url: '/queens',
+        name: 'home.queens',
+        url: 'queens',
         component: 'queensComponent',
     }
     var queenState = {
-        name: 'queen',
-        url: '/queens/:queenId',
+        name: 'home.queen',
+        url: 'queens/:queenId',
         component: 'queenComponent',
+    }
+
+    var seasonState = {
+        name: 'home.seasons',
+        url: 'seasons',
+        component: 'seasonsComponent'
     }
     $stateProvider.state(homeState);
     $stateProvider.state(queensState);
     $stateProvider.state(queenState);
+    $stateProvider.state(seasonState);
+    $urlRouterProvider.otherwise("/")
 }

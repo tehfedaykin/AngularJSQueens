@@ -1,10 +1,16 @@
-
 import homeTemplate from './home.component.html';
+import './home.component.less';
 
-function HomeCtrl() {
-    var vm = this;
-    this.title = 'Home Component';
-    console.log('home');
+HomeCtrl.$inject = ['$mdSidenav']
+
+function HomeCtrl($mdSidenav: any) {
+    const vm = this;
+    vm.$mdSidenav = $mdSidenav;
+
+    vm.title = 'Angular Queens Demo';
+    vm.toggleUsersList = function (){
+        vm.$mdSidenav('left').toggle();
+    }
 }
 
 let homeComponent = {

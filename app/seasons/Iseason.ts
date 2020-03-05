@@ -1,5 +1,9 @@
+import IQueen from "../queens/Iqueen";
+
 export default interface ISeason {
   id: number;
   number: number;
-  winner: string;
+  winnerId: string;
+  image_url: string;
+  queens: IQueen[];
 }

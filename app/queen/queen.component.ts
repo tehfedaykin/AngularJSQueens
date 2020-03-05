@@ -1,7 +1,7 @@
 import IQueen from "../queens/Iqueen";
 import queenTemplate from './queen.component.html';
 import './queen.component.less';
-
+ 
 QueenCtrl.$inject = ['QueenService', '$stateParams']
 
 function QueenCtrl(QueenService: any, $stateParams: any) {

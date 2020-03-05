@@ -60,10 +60,22 @@ module.exports = {
 				use: {
 					loader: 'html-loader',
 					options: {
-					attrs: [':data-src']
+						//attrs: [':data-src']
+						attrs: ['md-icon:md-svg-src', ':ng-src'],
+						// define where the html-loader should start parsing absolute paths
+						root: path.resolve(__dirname, './app'),
+						name: '[name]-[hash].[ext]'
 					}
 				}
 			},
+			{
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          // the hash for when svgs have been found
+          name: '[name]-[hash].[ext]'
+        }
+      },
 			{
         test: /\.tsx?$/,
         use: 'ts-loader',
@@ -82,7 +94,18 @@ module.exports = {
             loader: 'less-loader', // compiles Less to CSS
           },
         ],
-      }
+			},
+			{
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+			},
+			{
+				test: /\.svg/,
+				use: {
+					loader: 'svg-url-loader',
+					options: {}
+				}
+			}
 		]
 	},
 
